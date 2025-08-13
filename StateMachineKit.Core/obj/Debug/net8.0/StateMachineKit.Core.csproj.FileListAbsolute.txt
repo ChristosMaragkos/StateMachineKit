@@ -1,0 +1,11 @@
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\bin\Debug\net8.0\StateMachineKit.Core.deps.json
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\bin\Debug\net8.0\StateMachineKit.Core.dll
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\bin\Debug\net8.0\StateMachineKit.Core.pdb
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Debug\net8.0\StateMachineKit.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Debug\net8.0\StateMachineKit.Core.AssemblyInfoInputs.cache
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Debug\net8.0\StateMachineKit.Core.AssemblyInfo.cs
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Debug\net8.0\StateMachineKit.Core.csproj.CoreCompileInputs.cache
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Debug\net8.0\StateMachineKit.Core.dll
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Debug\net8.0\refint\StateMachineKit.Core.dll
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Debug\net8.0\StateMachineKit.Core.pdb
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Debug\net8.0\ref\StateMachineKit.Core.dll
