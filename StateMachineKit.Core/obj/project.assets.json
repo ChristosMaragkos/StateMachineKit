@@ -16,7 +16,7 @@
     "version": "1.0.0",
     "restore": {
       "projectUniqueName": "C:\\Users\\chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core\\StateMachineKit.Core.csproj",
-      "projectName": "StateMachineKit.Core",
+      "projectName": "StateMachineKit",
       "projectPath": "C:\\Users\\chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core\\StateMachineKit.Core.csproj",
       "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core\\obj\\",

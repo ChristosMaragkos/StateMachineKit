@@ -5,6 +5,11 @@
         <ImplicitUsings>disable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RootNamespace>StateMachineKit.Core</RootNamespace>
+        
+        <Author>Christos Maragkos</Author>
+        <PackageId>StateMachineKit</PackageId>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <Description>StateMachineKit is a library for creating and managing finite state machines within a game.</Description>
     </PropertyGroup>
 
 </Project>
