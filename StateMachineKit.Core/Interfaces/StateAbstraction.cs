@@ -1,5 +1,14 @@
 namespace StateMachineKit.Core.Interfaces
 {
+    /// <summary>
+    /// Interface for a state that can be managed by a state machine.
+    /// The state is owned by a class that implements the IStateOwner interface.
+    /// The state machine is responsible for managing the current state of the owner,
+    /// changing states, and calling the appropriate methods on the current state.
+    /// The state should implement the Enter, Exit, Update, and PhysicsUpdate methods
+    /// to handle its own logic and behavior.
+    /// </summary>
+    /// <typeparam name="TStateOwner"></typeparam>
     public interface IState<TStateOwner> where TStateOwner : class, IStateOwner
     {
         /// <summary>
@@ -44,6 +53,22 @@ namespace StateMachineKit.Core.Interfaces
         TStateOwner Owner { get; protected set; }
     }
     
+    /// <summary>
+    /// Interface for a state machine that manages states for a specific owner.
+    /// The owner is a class that implements the IStateOwner interface.
+    /// The state machine is responsible for managing the current state of the owner,
+    /// changing states, and calling the appropriate methods on the current state.
+    /// The state machine should be initialized with an initial state before it can be used.
+    /// The state machine automatically calls the Enter method of the initial state
+    /// when it is initialized, and the Exit method of the current state
+    /// when the state is changed to a new state.
+    /// The state machine also automatically calls the Update and PhysicsUpdate methods
+    /// of the current state when the Update and PhysicsUpdate methods of the state machine are called.
+    /// This allows the state machine to manage the current state of the owner
+    /// and ensure that the appropriate methods are called on the current state
+    /// at the appropriate times.
+    /// </summary>
+    /// <typeparam name="TStateOwner"></typeparam>
     public interface IStateMachine<TStateOwner> where TStateOwner : class, IStateOwner
     {
         /// <summary>
@@ -103,6 +128,16 @@ namespace StateMachineKit.Core.Interfaces
         void PhysicsUpdate(){CurrentState.PhysicsUpdate(deltaTime:0f);}
     }
 
+    /// <summary>
+    /// Interface for a state owner.
+    /// The owner is a class that implements this interface and
+    /// is responsible for managing its own state.
+    /// The owner should implement the Initialize and Destroy
+    /// methods to handle its own initialization and cleanup.
+    /// The Name property is used for debugging purposes
+    /// to identify the owner in logs or error messages.
+    /// The owner can be used to access and alter its own state via the state machine.
+    /// </summary>
     public interface IStateOwner
     {
         /// <summary>
