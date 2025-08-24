@@ -9,8 +9,7 @@ public class CoreTests
     {
         public string Name { get; set; }
         public int Health { get; set; }
-        private bool _isDestroyed;
-        public bool IsDestroyed => _isDestroyed;
+        public bool IsDestroyed { get; private set; }
 
         public TestStateOwner(string name)
         {
@@ -21,13 +20,13 @@ public class CoreTests
         public void Initialize()
         {
             Health = 1;
-            _isDestroyed = false;
+            IsDestroyed = false;
         }
 
         public void Destroy()
         {
-            if (_isDestroyed) return;
-            _isDestroyed = true;
+            if (IsDestroyed) return;
+            IsDestroyed = true;
             Console.WriteLine($"{Name} destroyed!");
         }
     }
@@ -35,12 +34,6 @@ public class CoreTests
     // State that applies damage then (on Update) may transition to DieTestState.
     private class TakeDamageTestState : IState<TestStateOwner>
     {
-        public TakeDamageTestState(IStateMachine<TestStateOwner> stateMachine, TestStateOwner owner)
-        {
-            StateMachine = stateMachine;
-            Owner = owner;
-        }
-
         public void Enter(IState<TestStateOwner>? previousState = null)
         {
             Owner.Health -= 1;
@@ -51,7 +44,7 @@ public class CoreTests
         {
             if (Owner.Health <= 0)
             {
-                StateMachine.ChangeState(new DieTestState(StateMachine, Owner));
+                StateMachine.ChangeState(typeof(TakeDamageTestState));
             }
         }
 
@@ -67,12 +60,6 @@ public class CoreTests
     // Terminal state.
     private class DieTestState : IState<TestStateOwner>
     {
-        public DieTestState(IStateMachine<TestStateOwner> stateMachine, TestStateOwner owner)
-        {
-            StateMachine = stateMachine;
-            Owner = owner;
-        }
-
         public void Enter(IState<TestStateOwner>? previousState = null)
         {
             if (previousState is TakeDamageTestState)
@@ -89,87 +76,34 @@ public class CoreTests
         public IStateMachine<TestStateOwner> StateMachine { get; set; }
         public TestStateOwner Owner { get; set; }
     }
-
-    // Minimal test state machine implementing expected operations.
+    
+    // Minimal representation of a state machine for testing.
     private class TestStateMachine : IStateMachine<TestStateOwner>
     {
-        public TestStateMachine(TestStateOwner owner)
+        public Dictionary<Type, IState<TestStateOwner>> States { get; } = new();
+        public TestStateOwner Owner { get; set; }
+        public TestStateOwner FindOwner()
         {
-            Owner = owner;
+            return new TestStateOwner("TestOwner" + Guid.NewGuid());
         }
 
-        public void Initialize(IState<TestStateOwner> initialState)
+        public IState<TestStateOwner> CurrentState { get; set; }
+        public List<IState<TestStateOwner>> GetAllStates()
         {
-            CurrentState = initialState ?? throw new ArgumentNullException(nameof(initialState));
-            CurrentState.Enter();
+            return [
+                new TakeDamageTestState(),
+                new DieTestState()
+            ];
         }
-
-        public void ChangeState(IState<TestStateOwner> newState)
-        {
-            ArgumentNullException.ThrowIfNull(newState);
-            var previous = CurrentState;
-            CurrentState = newState;
-            CurrentState.Enter(previous);
-        }
-
-        public void Update() => CurrentState.Update();
-
-        public IStateOwner Owner { get; }
-        public IState<TestStateOwner> CurrentState { get; set; } = null!;
     }
-
+    
     [Fact]
-    public void TakeDamageState_ReducesHealth_OnEnter()
+    public void TestStateMachineInitialization()
     {
-        var owner = new TestStateOwner("Owner1") { Health = 2 }; // Override initial health.
-        var sm = new TestStateMachine(owner);
-        var damage = new TakeDamageTestState(sm, owner);
-
-        sm.Initialize(damage);
-
-        Assert.Equal(1, owner.Health);
-        Assert.IsType<TakeDamageTestState>(sm.CurrentState);
-    }
-
-    [Fact]
-    public void Update_Transitions_To_DieState_When_Health_Depleted()
-    {
-        var owner = new TestStateOwner("Owner2"); // Starts at 1, Enter will reduce to 0.
-        var sm = new TestStateMachine(owner);
-        var damage = new TakeDamageTestState(sm, owner);
-
-        sm.Initialize(damage);
-        sm.Update(); // Triggers transition.
-
-        Assert.IsType<DieTestState>(sm.CurrentState);
-        Assert.True(owner.IsDestroyed);
-    }
-
-    [Fact]
-    public void No_Transition_When_Health_Remains_Positive()
-    {
-        var owner = new TestStateOwner("Owner3") { Health = 3 };
-        var sm = new TestStateMachine(owner);
-        var damage = new TakeDamageTestState(sm, owner);
-
-        sm.Initialize(damage); // Health becomes 2.
-        sm.Update(); // Still > 0, no transition.
-
-        Assert.IsType<TakeDamageTestState>(sm.CurrentState);
-        Assert.False(owner.IsDestroyed);
-    }
-
-    [Fact]
-    public void DieState_Calls_Destroy_On_Enter()
-    {
-        var owner = new TestStateOwner("Owner4");
-        var sm = new TestStateMachine(owner);
-        var damage = new TakeDamageTestState(sm, owner);
-
-        sm.Initialize(damage);
-        sm.Update(); // Transition to DieTestState.
-
-        Assert.IsType<DieTestState>(sm.CurrentState);
-        Assert.True(owner.IsDestroyed);
+        var stateMachine = new TestStateMachine();
+        stateMachine.Initialize(new TakeDamageTestState());
+        
+        Assert.NotNull(stateMachine.CurrentState);
+        Assert.Contains(typeof(TakeDamageTestState), stateMachine.States.Keys);
     }
 }

@@ -100,3 +100,5 @@ C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Tests\obj\Debu
 C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Tests\obj\Debug\net8.0\StateMachineKit.Core.Tests.pdb
 C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Tests\obj\Debug\net8.0\StateMachineKit.Core.Tests.genruntimeconfig.cache
 C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Tests\obj\Debug\net8.0\ref\StateMachineKit.Core.Tests.dll
+c:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Tests\bin\Debug\net8.0\StateMachineKit.Core.xml
+c:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Tests\obj\Debug\net8.0\StateMachineKit.Core.Tests.sourcelink.json

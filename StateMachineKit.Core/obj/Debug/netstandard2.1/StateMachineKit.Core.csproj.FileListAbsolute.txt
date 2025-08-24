@@ -7,3 +7,6 @@ C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\bin\Debug\nets
 C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\bin\Debug\netstandard2.1\StateMachineKit.Core.pdb
 C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Debug\netstandard2.1\StateMachineKit.Core.dll
 C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Debug\netstandard2.1\StateMachineKit.Core.pdb
+c:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\bin\Debug\netstandard2.1\StateMachineKit.Core.xml
+c:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Debug\netstandard2.1\StateMachineKit.Core.sourcelink.json
+c:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Debug\netstandard2.1\StateMachineKit.Core.xml
