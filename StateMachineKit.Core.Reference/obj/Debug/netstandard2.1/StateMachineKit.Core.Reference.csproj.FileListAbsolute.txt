@@ -1,0 +1,15 @@
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Reference\bin\Debug\netstandard2.1\StateMachineKit.Core.Reference.deps.json
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Reference\bin\Debug\netstandard2.1\StateMachineKit.Core.Reference.dll
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Reference\bin\Debug\netstandard2.1\StateMachineKit.Core.Reference.pdb
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Reference\bin\Debug\netstandard2.1\StateMachineKit.Core.dll
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Reference\bin\Debug\netstandard2.1\StateMachineKit.Core.pdb
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Reference\bin\Debug\netstandard2.1\StateMachineKit.Core.xml
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Reference\obj\Debug\netstandard2.1\StateMachineKit.Core.Reference.csproj.AssemblyReference.cache
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Reference\obj\Debug\netstandard2.1\StateMachineKit.Core.Reference.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Reference\obj\Debug\netstandard2.1\StateMachineKit.Core.Reference.AssemblyInfoInputs.cache
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Reference\obj\Debug\netstandard2.1\StateMachineKit.Core.Reference.AssemblyInfo.cs
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Reference\obj\Debug\netstandard2.1\StateMachineKit.Core.Reference.csproj.CoreCompileInputs.cache
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Reference\obj\Debug\netstandard2.1\StateMachineKit.Core.Reference.sourcelink.json
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Reference\obj\Debug\netstandard2.1\StateMac.F4BCEA55.Up2Date
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Reference\obj\Debug\netstandard2.1\StateMachineKit.Core.Reference.dll
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core.Reference\obj\Debug\netstandard2.1\StateMachineKit.Core.Reference.pdb

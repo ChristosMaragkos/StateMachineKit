@@ -1,0 +1,54 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.1/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.1": {},
+    ".NETStandard,Version=v2.1/": {
+      "StateMachineKit.Core.Reference/1.0.0": {
+        "dependencies": {
+          "StateMachineKit": "1.0.0",
+          "StateMachineKit.Core": "1.0.0.0"
+        },
+        "runtime": {
+          "StateMachineKit.Core.Reference.dll": {}
+        }
+      },
+      "StateMachineKit/1.0.0": {
+        "runtime": {
+          "StateMachineKit.Core.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "StateMachineKit.Core/1.0.0.0": {
+        "runtime": {
+          "StateMachineKit.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "StateMachineKit.Core.Reference/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StateMachineKit/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StateMachineKit.Core/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
