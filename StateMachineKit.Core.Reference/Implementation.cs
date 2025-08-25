@@ -14,11 +14,11 @@ namespace StateMachineKit.Core.Reference
 
         public StateOwner(string name)
         {
-            Name = name;
+            StateOwnerName = name;
             Initialize();
         }
 
-        public string Name { get; }
+        public string StateOwnerName { get; }
         public int Health { get; set; }
 
         public void Initialize()
@@ -33,7 +33,7 @@ namespace StateMachineKit.Core.Reference
     
     public class FiniteStateMachine : IStateMachine<StateOwner>
     {
-        public StateOwner Context { get; private set; }
+        public StateOwner? Context { get; private set; }
         public IState<StateOwner>? CurrentState { get; private set; }
 
         private readonly Dictionary<Type, IState<StateOwner>> _states = new
@@ -88,11 +88,12 @@ namespace StateMachineKit.Core.Reference
 
         public void ChangeState<TState>() where TState : class, IState<StateOwner>
         {
-            CurrentState?.OnExit(Context);
+            CurrentState?.OnExit(Context?? throw new InvalidOperationException(
+                "State machine context is not set. Ensure AttachOwner has been called."));
             var prev = CurrentState;
             CurrentState = _states[typeof(TState)] ?? throw new KeyNotFoundException(
-                $"[{Context.Name.ToUpper()}] State of type {typeof(TState).Name} does not exist.");
-            CurrentState.OnEnter(Context, prev);
+                $"[{Context!.StateOwnerName.ToUpper()}] State of type {typeof(TState).Name} does not exist.");
+            CurrentState.OnEnter(Context!, prev);
         }
 
         public bool TryChangeState<TState>() where TState : class, IState<StateOwner>
@@ -113,12 +114,12 @@ namespace StateMachineKit.Core.Reference
     {
         public void OnEnter(StateOwner ctx, IState<StateOwner>? from = null)
         {
-            Console.WriteLine($"{ctx.Name} is now walking.");
+            Console.WriteLine($"{ctx.StateOwnerName} is now walking.");
         }
 
         public void OnExit(StateOwner ctx)
         {
-            Console.WriteLine($"{ctx.Name} stopped walking.");
+            Console.WriteLine($"{ctx.StateOwnerName} stopped walking.");
         }
 
         public void OnUpdate(StateOwner ctx, IStateMachine<StateOwner> stateMachine,
@@ -134,7 +135,7 @@ namespace StateMachineKit.Core.Reference
         public void OnFixedUpdate(StateOwner ctx, IStateMachine<StateOwner> stateMachine,
             float deltaTime = 0)
         {
-            Console.WriteLine($"{ctx.Name} is now walking.");
+            Console.WriteLine($"{ctx.StateOwnerName} is now walking.");
         }
     }
 
@@ -143,12 +144,12 @@ namespace StateMachineKit.Core.Reference
     {
         public void OnEnter(StateOwner ctx, IState<StateOwner>? from = null)
         {
-            Console.WriteLine($"{ctx.Name} is now running.");
+            Console.WriteLine($"{ctx.StateOwnerName} is now running.");
         }
 
         public void OnExit(StateOwner ctx)
         {
-            Console.WriteLine($"{ctx.Name} stopped running.");
+            Console.WriteLine($"{ctx.StateOwnerName} stopped running.");
         }
 
         public void OnUpdate(StateOwner ctx, IStateMachine<StateOwner> stateMachine,
@@ -164,7 +165,7 @@ namespace StateMachineKit.Core.Reference
         public void OnFixedUpdate(StateOwner ctx, IStateMachine<StateOwner> stateMachine,
             float deltaTime = 0)
         {
-            Console.WriteLine($"{ctx.Name} is now running.");
+            Console.WriteLine($"{ctx.StateOwnerName} is now running.");
         }
     }
 
@@ -173,12 +174,12 @@ namespace StateMachineKit.Core.Reference
     {
         public void OnEnter(StateOwner ctx, IState<StateOwner>? from = null)
         {
-            Console.WriteLine($"{ctx.Name} is now idle.");
+            Console.WriteLine($"{ctx.StateOwnerName} is now idle.");
         }
 
         public void OnExit(StateOwner ctx)
         {
-            Console.WriteLine($"{ctx.Name} stopped idling.");
+            Console.WriteLine($"{ctx.StateOwnerName} stopped idling.");
         }
 
         public void OnUpdate(StateOwner ctx, IStateMachine<StateOwner> stateMachine,
@@ -194,7 +195,7 @@ namespace StateMachineKit.Core.Reference
         public void OnFixedUpdate(StateOwner ctx, IStateMachine<StateOwner> stateMachine,
             float deltaTime = 0)
         {
-            Console.WriteLine($"{ctx.Name} is now idle.");
+            Console.WriteLine($"{ctx.StateOwnerName} is now idle.");
         }
     }
 }

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>StateMachineKit</id>
+    <version>2.0.0</version>
+    <authors>StateMachineKit.Core</authors>
+    <license type="file">license.md</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <readme>README.md</readme>
+    <description>StateMachineKit is a library for creating and managing finite state machines within a game.</description>
+    <tags>state-machine fsm game-dev ai</tags>
+    <repository type="git" url="https://github.com/ChristosMaragkos/StateMachineKit" commit="1f3823a769068984ca8ffab0998e24491d552401" />
+    <dependencies>
+      <group targetFramework="net8.0" />
+      <group targetFramework=".NETStandard2.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\bin\Release\net8.0\StateMachineKit.Core.dll" target="lib\net8.0\StateMachineKit.Core.dll" />
+    <file src="C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\bin\Release\net8.0\StateMachineKit.Core.xml" target="lib\net8.0\StateMachineKit.Core.xml" />
+    <file src="C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\bin\Release\netstandard2.1\StateMachineKit.Core.dll" target="lib\netstandard2.1\StateMachineKit.Core.dll" />
+    <file src="C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\bin\Release\netstandard2.1\StateMachineKit.Core.xml" target="lib\netstandard2.1\StateMachineKit.Core.xml" />
+    <file src="C:\Users\chris\RiderProjects\StateMachineKit\README.md" target="\README.md" />
+    <file src="C:\Users\chris\RiderProjects\StateMachineKit\license.md" target="\license.md" />
+  </files>
+</package>

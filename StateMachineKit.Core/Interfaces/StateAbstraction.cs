@@ -50,7 +50,7 @@ namespace StateMachineKit.Core.Interfaces
         /// <summary>
         /// Gets the context (owner) associated with this state machine.
         /// </summary>
-        TContext Context { get; }
+        TContext? Context { get; }
         /// <summary>
         /// The state currently active.
         /// </summary>
@@ -94,7 +94,7 @@ namespace StateMachineKit.Core.Interfaces
         /// <summary>
         /// Friendly name for debugging/logging.
         /// </summary>
-        string Name { get; }
+        string StateOwnerName { get; }
 
         /// <summary>
         /// Called to set up the owner before use.
@@ -124,7 +124,7 @@ namespace StateMachineKit.Core.Interfaces
             where TContext : class, IStateOwner
         {
             var ctx = sm.Context;
-            sm.CurrentState?.OnUpdate(ctx, sm, deltaTime);
+            sm.CurrentState?.OnUpdate(ctx!, sm, deltaTime);
         }
         
         /// <summary>
@@ -138,7 +138,7 @@ namespace StateMachineKit.Core.Interfaces
             where TContext : class, IStateOwner
         {
             var ctx = sm.Context;
-            sm.CurrentState?.OnFixedUpdate(ctx, sm, deltaTime);
+            sm.CurrentState?.OnFixedUpdate(ctx!, sm, deltaTime);
         }
     }
 }

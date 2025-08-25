@@ -1,0 +1,12 @@
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\bin\Release\netstandard2.1\StateMachineKit.Core.deps.json
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\bin\Release\netstandard2.1\StateMachineKit.Core.dll
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\bin\Release\netstandard2.1\StateMachineKit.Core.pdb
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\bin\Release\netstandard2.1\StateMachineKit.Core.xml
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Release\netstandard2.1\StateMachineKit.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Release\netstandard2.1\StateMachineKit.Core.AssemblyInfoInputs.cache
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Release\netstandard2.1\StateMachineKit.Core.AssemblyInfo.cs
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Release\netstandard2.1\StateMachineKit.Core.csproj.CoreCompileInputs.cache
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Release\netstandard2.1\StateMachineKit.Core.sourcelink.json
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Release\netstandard2.1\StateMachineKit.Core.dll
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Release\netstandard2.1\StateMachineKit.Core.xml
+C:\Users\chris\RiderProjects\StateMachineKit\StateMachineKit.Core\obj\Release\netstandard2.1\StateMachineKit.Core.pdb

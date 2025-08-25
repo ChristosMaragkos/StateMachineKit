@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateMachineKit.Core.Refere
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateMachineKit.Tests", "StateMachineKit.Tests\StateMachineKit.Tests.csproj", "{5E7D4E5F-2F2C-4E2F-A5A7-7F2AE3DD01F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateMachineKit.Godot", "StateMachineKit.Godot\StateMachineKit.Godot.csproj", "{055AFDD9-B082-4CC7-B303-2EB6EC35EF73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,5 +25,9 @@ Global
 		{5E7D4E5F-2F2C-4E2F-A5A7-7F2AE3DD01F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E7D4E5F-2F2C-4E2F-A5A7-7F2AE3DD01F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E7D4E5F-2F2C-4E2F-A5A7-7F2AE3DD01F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{055AFDD9-B082-4CC7-B303-2EB6EC35EF73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{055AFDD9-B082-4CC7-B303-2EB6EC35EF73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{055AFDD9-B082-4CC7-B303-2EB6EC35EF73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{055AFDD9-B082-4CC7-B303-2EB6EC35EF73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

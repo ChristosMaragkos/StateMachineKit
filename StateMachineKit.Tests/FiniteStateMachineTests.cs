@@ -35,7 +35,7 @@ public class FiniteStateMachineTests
     public void OwnerInitialize_SetsDataCorrectly()
     {
         var owner = new StateOwner("TestOwner");
-        Assert.Equal("TestOwner", owner.Name);
+        Assert.Equal("TestOwner", owner.StateOwnerName);
         Assert.Equal(100, owner.Health);
     }
     

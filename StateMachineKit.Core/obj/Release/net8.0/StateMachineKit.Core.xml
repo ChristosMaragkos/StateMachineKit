@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StateMachineKit.Core</name>
+    </assembly>
+    <members>
+        <member name="T:StateMachineKit.Core.Attributes.DiscoverableStateAttribute">
+            <summary>
+            Attribute to mark a class as a discoverable state.
+            You can mark state classes with this attribute and use reflection
+            to find and register them automatically in your state machine.
+            </summary>
+        </member>
+        <member name="T:StateMachineKit.Core.Interfaces.IState`1">
+            <summary>
+            Abstraction for a state in a state machine.
+            Defines the contract for entering, exiting, and updating states.
+            </summary>
+            <typeparam name="TContext">The context provided to this State, usually its owner.</typeparam>
+        </member>
+        <member name="M:StateMachineKit.Core.Interfaces.IState`1.OnEnter(`0,StateMachineKit.Core.Interfaces.IState{`0})">
+            <summary>
+            Called when the state is entered.
+            The logic placed here will be executed once when the state is activated.
+            </summary>
+            <param name="ctx">The context surrounding this State. Usually its Owner.</param>
+            <param name="from">The previous State. Optional.</param>
+        </member>
+        <member name="M:StateMachineKit.Core.Interfaces.IState`1.OnExit(`0)">
+            <summary>
+            Called when the state is exited.
+            Use to perform cleanup or commit results before switching to another state.
+            </summary>
+            <param name="ctx">The context (owner) that hosts this state.</param>
+        </member>
+        <member name="M:StateMachineKit.Core.Interfaces.IState`1.OnUpdate(`0,StateMachineKit.Core.Interfaces.IStateMachine{`0},System.Single)">
+            <summary>
+            Called every update tick.
+            </summary>
+            <param name="ctx">The context (owner) that hosts this state.</param>
+            <param name="stateMachine">The state machine managing this state.</param>
+            <param name="deltaTime">Elapsed time since last update (optional).</param>
+        </member>
+        <member name="M:StateMachineKit.Core.Interfaces.IState`1.OnFixedUpdate(`0,StateMachineKit.Core.Interfaces.IStateMachine{`0},System.Single)">
+            <summary>
+            Called on fixed-timestep updates (e.g. physics).
+            </summary>
+            <param name="ctx">The context (owner) that hosts this state.</param>
+            <param name="stateMachine">The state machine managing this state.</param>
+            <param name="deltaTime">Elapsed fixed timestep (optional).</param>
+        </member>
+        <member name="T:StateMachineKit.Core.Interfaces.IStateMachine`1">
+            <summary>
+            Contract for a state machine that manages transitions between states for a given owner.
+            </summary>
+            <typeparam name="TContext">Type of the owning context.</typeparam>
+        </member>
+        <member name="P:StateMachineKit.Core.Interfaces.IStateMachine`1.Context">
+            <summary>
+            Gets the context (owner) associated with this state machine.
+            </summary>
+        </member>
+        <member name="P:StateMachineKit.Core.Interfaces.IStateMachine`1.CurrentState">
+            <summary>
+            The state currently active.
+            </summary>
+        </member>
+        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.AttachOwner(`0)">
+            <summary>
+            Attaches the owning context. Must be called before initialization
+            if not provided via constructor.
+            </summary>
+            <param name="owner">The owner instance.</param>
+        </member>
+        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.Initialize``1">
+            <summary>
+            Initializes the state machine to the specified starting state.
+            Must be called before using the state machine.
+            </summary>
+            <typeparam name="TState">The type of the state to initialize the
+            state machine with.</typeparam>
+        </member>
+        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.ChangeState``1">
+            <summary>
+            Forces a transition to the specified state type.
+            </summary>
+            <typeparam name="TState">Target state type.</typeparam>
+        </member>
+        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.TryChangeState``1">
+            <summary>
+            Attempts a transition to the specified state type, returning
+            false if it cannot occur.
+            </summary>
+            <typeparam name="TState">Target state type.</typeparam>
+            <returns>True if the transition occurred.</returns>
+        </member>
+        <member name="T:StateMachineKit.Core.Interfaces.IStateOwner">
+            <summary>
+            Represents an entity that owns and drives a state machine.
+            </summary>
+        </member>
+        <member name="P:StateMachineKit.Core.Interfaces.IStateOwner.StateOwnerName">
+            <summary>
+            Friendly name for debugging/logging.
+            </summary>
+        </member>
+        <member name="M:StateMachineKit.Core.Interfaces.IStateOwner.Initialize">
+            <summary>
+            Called to set up the owner before use.
+            </summary>
+        </member>
+        <member name="M:StateMachineKit.Core.Interfaces.IStateOwner.Destroy">
+            <summary>
+            Called to clean up resources when the owner is no longer needed.
+            </summary>
+        </member>
+        <member name="T:StateMachineKit.Core.Interfaces.StateMachineExtensions">
+            <summary>
+            Helper extensions for state machine operations.
+            </summary>
+        </member>
+        <member name="M:StateMachineKit.Core.Interfaces.StateMachineExtensions.Tick``1(StateMachineKit.Core.Interfaces.IStateMachine{``0},System.Single)">
+            <summary>
+            Ticks the current state, calling its update logic.
+            Should be called every frame or update cycle.
+            </summary>
+            <param name="sm">The state machine instance this is called on.</param>
+            <param name="deltaTime">The time that has elapsed since the last frame.
+            Defaults to zero.</param>
+            <typeparam name="TContext">The context associated with this State Machine.</typeparam>
+        </member>
+        <member name="M:StateMachineKit.Core.Interfaces.StateMachineExtensions.FixedTick``1(StateMachineKit.Core.Interfaces.IStateMachine{``0},System.Single)">
+            <summary>
+            Ticks the current state for fixed-timestep updates.
+            Should be called at consistent intervals, e.g. for physics updates.
+            </summary>
+            <param name="sm"></param>
+            <param name="deltaTime"></param>
+            <typeparam name="TContext"></typeparam>
+        </member>
+    </members>
+</doc>

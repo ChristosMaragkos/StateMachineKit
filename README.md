@@ -23,6 +23,9 @@ It provides a lightweight abstraction for defining states, transitioning between
 public sealed class IdleState : IState<MyActor> { /* ... */ }
 public sealed class MoveState : IState<MyActor> { /* ... */ }
 
+// Assuming you've already defined classes
+// that implement IStateMachine and IStateOwner.
+
 var actor = new MyActor("Player");
 var fsm = FiniteStateMachine.Create(actor);
 fsm.Initialize<IdleState>();
@@ -49,3 +52,4 @@ Issues and PRs are welcome. Please include tests for behavioral changes.
 
 ## License
 MIT – see `license.md`.
+
