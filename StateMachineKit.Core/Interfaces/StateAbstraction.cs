@@ -54,7 +54,7 @@ namespace StateMachineKit.Core.Interfaces
         /// <summary>
         /// The state currently active.
         /// </summary>
-        IState<TContext> CurrentState { get; }
+        IState<TContext>? CurrentState { get; }
 
         /// <summary>
         /// Attaches the owning context. Must be called before initialization
@@ -124,7 +124,7 @@ namespace StateMachineKit.Core.Interfaces
             where TContext : class, IStateOwner
         {
             var ctx = sm.Context;
-            sm.CurrentState.OnUpdate(ctx, sm, deltaTime);
+            sm.CurrentState?.OnUpdate(ctx, sm, deltaTime);
         }
         
         /// <summary>
@@ -138,7 +138,7 @@ namespace StateMachineKit.Core.Interfaces
             where TContext : class, IStateOwner
         {
             var ctx = sm.Context;
-            sm.CurrentState.OnFixedUpdate(ctx, sm, deltaTime);
+            sm.CurrentState?.OnFixedUpdate(ctx, sm, deltaTime);
         }
     }
 }

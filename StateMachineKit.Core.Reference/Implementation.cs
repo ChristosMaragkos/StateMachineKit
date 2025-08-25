@@ -34,7 +34,7 @@ namespace StateMachineKit.Core.Reference
     public class FiniteStateMachine : IStateMachine<StateOwner>
     {
         public StateOwner Context { get; private set; }
-        public IState<StateOwner> CurrentState { get; private set; }
+        public IState<StateOwner>? CurrentState { get; private set; }
 
         private readonly Dictionary<Type, IState<StateOwner>> _states = new
             Dictionary<Type, IState<StateOwner>>();
@@ -43,6 +43,11 @@ namespace StateMachineKit.Core.Reference
         {
             Context = context;
             CurrentState = currentState;
+        }
+        
+        public FiniteStateMachine()
+        {
+            Context = FindOwner();
         }
 
         public void AttachOwner(StateOwner owner)
@@ -74,7 +79,8 @@ namespace StateMachineKit.Core.Reference
             var stateType = typeof(IState<StateOwner>);
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             foreach (var type in assembly.GetTypes()
-                         .Where(t => stateType.IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract)
+                         .Where(t => stateType.IsAssignableFrom(t) 
+                                     && t is { IsInterface: false, IsAbstract: false })
                          .Where(t => Attribute.IsDefined(t, typeof(DiscoverableStateAttribute))))
                 if (Activator.CreateInstance(type) is IState<StateOwner> instance)
                     _states[type] = instance;
@@ -82,10 +88,10 @@ namespace StateMachineKit.Core.Reference
 
         public void ChangeState<TState>() where TState : class, IState<StateOwner>
         {
-            CurrentState.OnExit(Context);
+            CurrentState?.OnExit(Context);
             var prev = CurrentState;
             CurrentState = _states[typeof(TState)] ?? throw new KeyNotFoundException(
-                $"State of type {typeof(TState).Name} does not exist.");
+                $"[{Context.Name.ToUpper()}] State of type {typeof(TState).Name} does not exist.");
             CurrentState.OnEnter(Context, prev);
         }
 
