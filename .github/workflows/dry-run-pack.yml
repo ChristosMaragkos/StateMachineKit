@@ -1,0 +1,43 @@
+name: Dry Run Package Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build Core
+        run: dotnet build StateMachineKit.Core/StateMachineKit.Core.csproj -c Release --no-restore
+
+      - name: Pack Core (no publish)
+        run: dotnet pack StateMachineKit.Core/StateMachineKit.Core.csproj -c Release --no-build -o ./artifacts/core
+
+      - name: Build Godot
+        run: dotnet build StateMachineKit.Godot/StateMachineKit.Godot.csproj -c Release --no-restore
+
+      - name: Pack Godot (no publish)
+        run: dotnet pack StateMachineKit.Godot/StateMachineKit.Godot.csproj -c Release --no-build -o ./artifacts/godot
+
+      - name: Upload Core nupkg
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-nuget
+          path: artifacts/core/*.nupkg
+
+      - name: Upload Godot nupkg
+        uses: actions/upload-artifact@v4
+        with:
+          name: godot-nuget
+          path: artifacts/godot/*.nupkg

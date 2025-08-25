@@ -1,0 +1,26 @@
+<Project Sdk="Godot.NET.Sdk/4.4.1">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <EnableDynamicLoading>true</EnableDynamicLoading>
+        <Nullable>enable</Nullable>
+        <PackageId>StateMachineKit.Godot</PackageId>
+        <Version>0.0.1</Version>
+        <Description>Godot integration layer for StateMachineKit finite state machine library.</Description>
+        <Authors>Christos Maragkos</Authors>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>license.md</PackageLicenseFile>
+        <RepositoryUrl>https://github.com/ChristosMaragkos/StateMachineKit</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>godot;state-machine;fsm;game-dev;ai</PackageTags>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\StateMachineKit.Core\StateMachineKit.Core.csproj" />
+      <None Include="..\README.md" Pack="true" PackagePath="/" Link="README.md" />
+      <None Include="..\license.md" Pack="true" PackagePath="/" Link="license.md" />
+    </ItemGroup>
+
+</Project>
