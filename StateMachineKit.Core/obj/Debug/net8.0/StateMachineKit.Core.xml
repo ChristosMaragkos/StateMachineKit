@@ -4,220 +4,139 @@
         <name>StateMachineKit.Core</name>
     </assembly>
     <members>
+        <member name="T:StateMachineKit.Core.Attributes.DiscoverableStateAttribute">
+            <summary>
+            Attribute to mark a class as a discoverable state.
+            You can mark state classes with this attribute and use reflection
+            to find and register them automatically in your state machine.
+            </summary>
+        </member>
         <member name="T:StateMachineKit.Core.Interfaces.IState`1">
             <summary>
-            Interface for a state that can be managed by a state machine.
-            The state is owned by a class that implements the IStateOwner interface.
-            The state machine is responsible for managing the current state of the owner,
-            changing states, and calling the appropriate methods on the current state.
-            The state should implement the Enter, Exit, Update, and PhysicsUpdate methods
-            to handle its own logic and behavior.
+            Abstraction for a state in a state machine.
+            Defines the contract for entering, exiting, and updating states.
             </summary>
-            <typeparam name="TStateOwner"></typeparam>
+            <typeparam name="TContext">The context provided to this State, usually its owner.</typeparam>
         </member>
-        <member name="M:StateMachineKit.Core.Interfaces.IState`1.Enter(StateMachineKit.Core.Interfaces.IState{`0})">
+        <member name="M:StateMachineKit.Core.Interfaces.IState`1.OnEnter(`0,StateMachineKit.Core.Interfaces.IState{`0})">
             <summary>
             Called when the state is entered.
-            You can optionally pass the previous State to this method.
-            This is useful for state transitions where you need to know the previous state.
+            The logic placed here will be executed once when the state is activated.
             </summary>
-            <param name="previousState">The previous State. Optional.</param>
+            <param name="ctx">The context surrounding this State. Usually its Owner.</param>
+            <param name="from">The previous State. Optional.</param>
         </member>
-        <member name="M:StateMachineKit.Core.Interfaces.IState`1.Exit">
+        <member name="M:StateMachineKit.Core.Interfaces.IState`1.OnExit(`0)">
             <summary>
-            Automatically called when the state is exited.
-            This method should contain any cleanup logic that needs to
-            be performed when the state is exited (e.g. unsubscribing from events).
-            Has no functionality by default, but can be overridden in derived classes.
+            Called when the state is exited.
+            Use to perform cleanup or commit results before switching to another state.
             </summary>
+            <param name="ctx">The context (owner) that hosts this state.</param>
         </member>
-        <member name="M:StateMachineKit.Core.Interfaces.IState`1.Update">
+        <member name="M:StateMachineKit.Core.Interfaces.IState`1.OnUpdate(`0,StateMachineKit.Core.Interfaces.IStateMachine{`0},System.Single)">
             <summary>
-            Intended to be called automatically by the state machine once per processing step.
+            Called every update tick.
             </summary>
+            <param name="ctx">The context (owner) that hosts this state.</param>
+            <param name="stateMachine">The state machine managing this state.</param>
+            <param name="deltaTime">Elapsed time since last update (optional).</param>
         </member>
-        <member name="M:StateMachineKit.Core.Interfaces.IState`1.PhysicsUpdate(System.Single)">
+        <member name="M:StateMachineKit.Core.Interfaces.IState`1.OnFixedUpdate(`0,StateMachineKit.Core.Interfaces.IStateMachine{`0},System.Single)">
             <summary>
-            Intended to be called automatically by the state machine once per physics step.
-            This is useful for physics-related updates that need to
-            be processed after all other updates.
+            Called on fixed-timestep updates (e.g. physics).
             </summary>
-            <param name="deltaTime">The time that has elapsed since the last physics step.</param>
-        </member>
-        <member name="P:StateMachineKit.Core.Interfaces.IState`1.StateMachine">
-            <summary>
-            The state machine that owns this state.
-            This is used to access the state machine's functionality, such as changing states.
-            </summary>
-        </member>
-        <member name="P:StateMachineKit.Core.Interfaces.IState`1.Owner">
-            <summary>
-            The owner of the state. This is used to access the owner's functionality, such as
-            getting the owner's name or calling the owner's methods.
-            </summary>
+            <param name="ctx">The context (owner) that hosts this state.</param>
+            <param name="stateMachine">The state machine managing this state.</param>
+            <param name="deltaTime">Elapsed fixed timestep (optional).</param>
         </member>
         <member name="T:StateMachineKit.Core.Interfaces.IStateMachine`1">
             <summary>
-            Interface for a state machine that manages states for a specific owner.
-            The owner is a class that implements the IStateOwner interface.
-            The state machine is responsible for managing the current state of the owner,
-            changing states, and calling the appropriate methods on the current state.
-            The state machine should be initialized with an initial state before it can be used.
-            The state machine automatically calls the Enter method of the initial state
-            when it is initialized, and the Exit method of the current state
-            when the state is changed to a new state.
-            The state machine also automatically calls the Update and PhysicsUpdate methods
-            of the current state when the Update and PhysicsUpdate methods of the state machine are called.
-            This allows the state machine to manage the current state of the owner
-            and ensure that the appropriate methods are called on the current state
-            at the appropriate times.
+            Contract for a state machine that manages transitions between states for a given owner.
             </summary>
-            <typeparam name="TStateOwner"></typeparam>
+            <typeparam name="TContext">Type of the owning context.</typeparam>
         </member>
-        <member name="P:StateMachineKit.Core.Interfaces.IStateMachine`1.States">
+        <member name="P:StateMachineKit.Core.Interfaces.IStateMachine`1.Context">
             <summary>
-            Type-safe dictionary of all states that are managed by the state machine.
-            The key is the type of the state, and the value is the state itself.
+            Gets the context (owner) associated with this state machine.
             </summary>
-        </member>
-        <member name="P:StateMachineKit.Core.Interfaces.IStateMachine`1.Owner">
-            <summary>
-            The owner of the state machine.
-            Necessary to set the owner of each state when the state machine is initialized.
-            </summary>
-        </member>
-        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.FindOwner">
-            <summary>
-            Abstract method to find the owner of the state machine.
-            </summary>
-            <returns></returns>
         </member>
         <member name="P:StateMachineKit.Core.Interfaces.IStateMachine`1.CurrentState">
             <summary>
-            The current state of the state machine.
-            This property is automatically updated when the state machine changes states.
-            It is used to access the current state's functionality,
-            such as calling its Update or PhysicsUpdate methods.
+            The state currently active.
             </summary>
         </member>
-        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.Initialize(StateMachineKit.Core.Interfaces.IState{`0})">
+        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.AttachOwner(`0)">
             <summary>
-            Method to initialize the state machine with an initial state.
-            This method should be called once before the state machine is used.
-            The initial state will be set as the current state of the state machine.
-            The state machine will automatically call the Enter method of the initial state.
-            The initial state should not be null.
+            Attaches the owning context. Must be called before initialization
+            if not provided via constructor.
             </summary>
-            <param name="initialState">The state to initialize the State Machine with.</param>
+            <param name="owner">The owner instance.</param>
         </member>
-        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.GetState``1">
+        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.Initialize``1">
             <summary>
-            Generic, type-safe retrieval.
+            Initializes the state machine to the specified starting state.
+            Must be called before using the state machine.
             </summary>
-            <typeparam name="TState"></typeparam>
-            <returns></returns>
-        </member>
-        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.TryGetState``1(``0@)">
-            <summary>
-            Tries to get the state of the specified type.
-            </summary>
-            <typeparam name="TState"></typeparam>
-            <param name="state"></param>
-            <returns></returns>
-        </member>
-        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.ChangeState(System.Type)">
-            <summary>
-            Method to change the current state of the state machine.
-            Automatically calls the Exit method of the current state
-            and the Enter method of the new state.
-            The new state should not be null.
-            </summary>
-            <param name="newStateType"></param>
+            <typeparam name="TState">The type of the state to initialize the
+            state machine with.</typeparam>
         </member>
         <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.ChangeState``1">
             <summary>
-            Generic convenience.
+            Forces a transition to the specified state type.
             </summary>
-            <typeparam name="TState"></typeparam>
+            <typeparam name="TState">Target state type.</typeparam>
         </member>
         <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.TryChangeState``1">
             <summary>
-            Tries to change the state to the specified type.
+            Attempts a transition to the specified state type, returning
+            false if it cannot occur.
             </summary>
-            <typeparam name="TState"></typeparam>
-            <returns></returns>
-        </member>
-        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.TryTransition``2">
-            <summary>
-            New: enforce previous state type at compile-time.
-            </summary>
-            <typeparam name="TFrom"></typeparam>
-            <typeparam name="TTo"></typeparam>
-            <returns></returns>
-        </member>
-        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.ExecuteStateUpdate">
-            <summary>
-            Automatically calls the Update method of the current state.
-            This method should be called once per processing step,
-            such as in _Process in Godot.
-            </summary>
-        </member>
-        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.ExecuteStatePhysics(System.Single)">
-            <summary>
-            Automatically calls the PhysicsUpdate method of the current state.
-            This method should be called once per physics step,
-            such as in _PhysicsProcess in Godot.
-            The deltaTime parameter is the time that has elapsed since the last physics step.
-            This is useful for physics-related updates
-            that need to be processed after all other updates.
-            </summary>
-        </member>
-        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.Attach(StateMachineKit.Core.Interfaces.IState{`0})">
-            <summary>
-            Attaches a state to the state machine.
-            This method is used to set the owner and state machine properties
-            of the state when it is created or added to the state machine.
-            </summary>
-            <param name="state">The state to attach.</param>
-        </member>
-        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.GetAllStates">
-            <summary>
-            Default: user can override to manually list instances (preferred for DI / custom ctor states).
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:StateMachineKit.Core.Interfaces.IStateMachine`1.DiscoverStateTypes">
-            <summary>
-            Reflection-based type discovery (parameterless ctor only) – override to customize or disable.
-            </summary>
-            <returns></returns>
+            <typeparam name="TState">Target state type.</typeparam>
+            <returns>True if the transition occurred.</returns>
         </member>
         <member name="T:StateMachineKit.Core.Interfaces.IStateOwner">
             <summary>
-            Interface for a state owner.
-            The owner is a class that implements this interface and
-            is responsible for managing its own state.
-            The owner should implement the Initialize and Destroy
-            methods to handle its own initialization and cleanup.
-            The Name property is used for debugging purposes
-            to identify the owner in logs or error messages.
-            The owner can be used to access and alter its own state via the state machine.
+            Represents an entity that owns and drives a state machine.
             </summary>
         </member>
         <member name="P:StateMachineKit.Core.Interfaces.IStateOwner.Name">
             <summary>
-            The name of the owner, used for debugging purposes.
+            Friendly name for debugging/logging.
             </summary>
         </member>
         <member name="M:StateMachineKit.Core.Interfaces.IStateOwner.Initialize">
             <summary>
-            Called when the owner is initialized.
+            Called to set up the owner before use.
             </summary>
         </member>
         <member name="M:StateMachineKit.Core.Interfaces.IStateOwner.Destroy">
             <summary>
-            Called when the owner is destroyed.
+            Called to clean up resources when the owner is no longer needed.
             </summary>
+        </member>
+        <member name="T:StateMachineKit.Core.Interfaces.StateMachineExtensions">
+            <summary>
+            Helper extensions for state machine operations.
+            </summary>
+        </member>
+        <member name="M:StateMachineKit.Core.Interfaces.StateMachineExtensions.Tick``1(StateMachineKit.Core.Interfaces.IStateMachine{``0},System.Single)">
+            <summary>
+            Ticks the current state, calling its update logic.
+            Should be called every frame or update cycle.
+            </summary>
+            <param name="sm">The state machine instance this is called on.</param>
+            <param name="deltaTime">The time that has elapsed since the last frame.
+            Defaults to zero.</param>
+            <typeparam name="TContext">The context associated with this State Machine.</typeparam>
+        </member>
+        <member name="M:StateMachineKit.Core.Interfaces.StateMachineExtensions.FixedTick``1(StateMachineKit.Core.Interfaces.IStateMachine{``0},System.Single)">
+            <summary>
+            Ticks the current state for fixed-timestep updates.
+            Should be called at consistent intervals, e.g. for physics updates.
+            </summary>
+            <param name="sm"></param>
+            <param name="deltaTime"></param>
+            <typeparam name="TContext"></typeparam>
         </member>
     </members>
 </doc>

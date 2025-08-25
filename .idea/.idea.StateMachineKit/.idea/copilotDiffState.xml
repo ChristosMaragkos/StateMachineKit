@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/StateMachineKit.Tests/StateMachineKit.Tests.csproj">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/StateMachineKit.Tests/StateMachineKit.Tests.csproj" />
+              <option name="originalContent" value="&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;&#10;  &lt;PropertyGroup&gt;&#10;    &lt;TargetFramework&gt;net8.0&lt;/TargetFramework&gt;&#10;    &lt;IsPackable&gt;false&lt;/IsPackable&gt;&#10;    &lt;Nullable&gt;enable&lt;/Nullable&gt;&#10;  &lt;/PropertyGroup&gt;&#10;  &lt;ItemGroup&gt;&#10;    &lt;PackageReference Include=&quot;xunit&quot; Version=&quot;2.9.0&quot; /&gt;&#10;    &lt;PackageReference Include=&quot;xunit.runner.visualstudio&quot; Version=&quot;2.8.1&quot; /&gt;&#10;    &lt;PackageReference Include=&quot;Microsoft.NET.Test.Sdk&quot; Version=&quot;17.10.0&quot; /&gt;&#10;  &lt;/ItemGroup&gt;&#10;  &lt;ItemGroup&gt;&#10;    &lt;ProjectReference Include=&quot;..\StateMachineKit.Core\StateMachineKit.Core.csproj&quot; /&gt;&#10;    &lt;ProjectReference Include=&quot;..\StateMachineKit.Core.Reference\StateMachineKit.Core.Reference.csproj&quot; /&gt;&#10;  &lt;/ItemGroup&gt;&#10;&lt;/Project&gt;&#10;" />
+              <option name="updatedContent" value="&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;&#10;  &lt;PropertyGroup&gt;&#10;    &lt;TargetFramework&gt;net8.0&lt;/TargetFramework&gt;&#10;    &lt;IsPackable&gt;false&lt;/IsPackable&gt;&#10;    &lt;Nullable&gt;enable&lt;/Nullable&gt;&#10;  &lt;/PropertyGroup&gt;&#10;  &lt;ItemGroup&gt;&#10;    &lt;PackageReference Include=&quot;xunit&quot; Version=&quot;2.9.0&quot; /&gt;&#10;    &lt;PackageReference Include=&quot;xunit.runner.visualstudio&quot; Version=&quot;2.8.1&quot; /&gt;&#10;    &lt;PackageReference Include=&quot;Microsoft.NET.Test.Sdk&quot; Version=&quot;17.10.0&quot; /&gt;&#10;  &lt;/ItemGroup&gt;&#10;  &lt;ItemGroup&gt;&#10;    &lt;ProjectReference Include=&quot;..\StateMachineKit.Core\StateMachineKit.Core.csproj&quot; /&gt;&#10;    &lt;ProjectReference Include=&quot;..\StateMachineKit.Core.Reference\StateMachineKit.Core.Reference.csproj&quot; /&gt;&#10;  &lt;/ItemGroup&gt;&#10;&lt;/Project&gt;&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
