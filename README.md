@@ -38,6 +38,45 @@ fsm.Tick(deltaTime);
 Install the `StateMachineKit.Godot` NuGet package and reference it from your Godot C# project. The Godot layer
 adds engine-friendly owner definitions and can be extended to tie into lifecycle callbacks (`_Process`, `_PhysicsProcess`).
 
+For now, the only useful class within the Godot module is GodotState, which implements the `IState<TContext>` interface and contains virtual methods.
+The state owner and state machine implementations proved redundant, as Godot does not load `GlobalClass`es from external Assemblies.
+
+With that in mind:
+
+## Quick Start (Godot)
+```csharp
+// First, define a global class extending the Godot node you want to manage states for, and implementing IStateOwner.
+[GlobalClass]
+public partial class Player : CharacterBody2D, IStateOwner{ /* ... */ }
+
+// Then, in another file:
+
+[GlobalClass]
+public partial class PlayerStateMachine : Node, IStateMachine<Player> {
+  // You're expected to write some logic of your own, depending on how you would like to manage States.
+  // The current recommended way is to use Reflection to help State Machines discover State classes that meet
+  // the criteria you set. This is the code snippet I provide as a reference:
+  private readonly Dictionary<Type, IState<Player>> _states = new();
+  private void FindAllStates()
+        {
+            _states.Clear();
+            var stateType = typeof(IState<StateOwner>);
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+            foreach (var type in assembly.GetTypes()
+                         .Where(t => stateType.IsAssignableFrom(t) 
+                                     && t is { IsInterface: false, IsAbstract: false })
+                         .Where(t => Attribute.IsDefined(t, typeof(DiscoverableStateAttribute))))
+                if (Activator.CreateInstance(type) is IState<StateOwner> instance)
+                    _states[type] = instance;
+        }
+  // . . .
+}
+
+// And then, you can declare your state classes by implementing IState<Player>, or extending GodotState<Player>.
+```
+StateMachineKit also provides a `DiscoverableStateAttribute` that you can use to separate classes you actually want to register in state machines.
+It is recommended that you cache each set of states after discovery for optimization purposes.
+
 ## Versioning
 - Core at 2.0.0 introduces improved initialization semantics and packaging metadata
 - Godot integration starts at 0.0.1 (early preview)
