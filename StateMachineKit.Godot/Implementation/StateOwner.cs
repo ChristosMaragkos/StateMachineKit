@@ -1,9 +1,24 @@
 using Godot;
+using Godot.Globalizer.Attributes;
 using StateMachineKit.Core.Interfaces;
 
 namespace StateMachineKit.Godot.Implementation;
 
-[GlobalClass]
+// -------------------------------------------------------------------------------
+// StateOwner Implementations
+// -------------------------------------------------------------------------------
+// These are example implementations of IStateOwner for different Godot node types.
+// You can create your own implementations based on your project's requirements.
+// -------------------------------------------------------------------------------
+// Each implementation includes a StateOwnerName property that combines the node's name
+// with a unique identifier if MakeNameUnique is set to true. This helps ensure that
+// each state owner can be uniquely identified, which is useful in complex scenes.
+// -------------------------------------------------------------------------------
+// If you wish to create your own StateOwnerType, define a global class extending
+// any Node type and implement the IStateOwner interface.
+// -------------------------------------------------------------------------------
+
+[GlobalizerWrap("StateMachineOwner2D")]
 public partial class StateOwner2D : CharacterBody2D, IStateOwner
 {
     public string StateOwnerName => Name + (MakeNameUnique ? $"_{GetInstanceId()}" : "");
@@ -18,7 +33,7 @@ public partial class StateOwner2D : CharacterBody2D, IStateOwner
     }
 }
 
-[GlobalClass]
+[GlobalizerWrap("StateMachineOwner3D")]
 public partial class StateOwner3D : CharacterBody3D, IStateOwner
 {
     public string StateOwnerName => Name + (MakeNameUnique ? $"_{GetInstanceId()}" : "");
@@ -33,7 +48,7 @@ public partial class StateOwner3D : CharacterBody3D, IStateOwner
     }
 }
 
-[GlobalClass]
+[GlobalizerWrap("StateMachineOwner")]
 public partial class StateOwner : Node, IStateOwner
 {
     public string StateOwnerName => Name + (MakeNameUnique ? $"_{GetInstanceId()}" : "");

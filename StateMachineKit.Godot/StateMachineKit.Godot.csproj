@@ -5,7 +5,7 @@
         <EnableDynamicLoading>true</EnableDynamicLoading>
         <Nullable>enable</Nullable>
         <PackageId>StateMachineKit.Godot</PackageId>
-        <Version>0.0.1</Version>
+        <Version>0.1.0</Version>
         <Description>Godot integration layer for StateMachineKit finite state machine library.</Description>
         <Authors>Christos Maragkos</Authors>
         <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -15,7 +15,11 @@
         <PackageTags>godot;state-machine;fsm;game-dev;ai</PackageTags>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+        <UserSecretsId>a3c12c77-8306-4349-9245-8be0825cfcb1</UserSecretsId>
+        <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
     </PropertyGroup>
+
+
 
     <ItemGroup>
       <ProjectReference Include="..\StateMachineKit.Core\StateMachineKit.Core.csproj" />
@@ -23,4 +27,9 @@
       <None Include="..\license.md" Pack="true" PackagePath="/" Link="license.md" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="GDExternalGlobalizer.Generator" Version="0.1.2" />
+        <Analyzer Include="$(NuGetPackageRoot)gdexternalglobalizer.generator\0.1.2\analyzers\dotnet\cs\Godot.Globalizer.dll"/>
+    </ItemGroup>
+    
 </Project>

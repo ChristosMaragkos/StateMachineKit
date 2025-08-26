@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StateMachineKit.Core.Reference")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+655da2339743e78542276335e2dd8a2347ab411c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+752302e0e69ffda356030b60c473dc58d6573542")]
 [assembly: System.Reflection.AssemblyProductAttribute("StateMachineKit.Core.Reference")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StateMachineKit.Core.Reference")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

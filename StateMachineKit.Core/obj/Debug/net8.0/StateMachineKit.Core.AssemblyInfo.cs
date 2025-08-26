@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyDescriptionAttribute("StateMachineKit is a library for creating and managing finite state machines with" +
     "in a game.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("2.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.0.0+655da2339743e78542276335e2dd8a2347ab411c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.0.0+752302e0e69ffda356030b60c473dc58d6573542")]
 [assembly: System.Reflection.AssemblyProductAttribute("StateMachineKit.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StateMachineKit.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("2.0.0.0")]

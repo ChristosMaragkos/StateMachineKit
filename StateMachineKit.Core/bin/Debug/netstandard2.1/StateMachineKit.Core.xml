@@ -99,7 +99,7 @@
             Represents an entity that owns and drives a state machine.
             </summary>
         </member>
-        <member name="P:StateMachineKit.Core.Interfaces.IStateOwner.Name">
+        <member name="P:StateMachineKit.Core.Interfaces.IStateOwner.StateOwnerName">
             <summary>
             Friendly name for debugging/logging.
             </summary>

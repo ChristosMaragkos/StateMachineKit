@@ -14,4 +14,3 @@
     <ProjectReference Include="..\StateMachineKit.Core.Reference\StateMachineKit.Core.Reference.csproj" />
   </ItemGroup>
 </Project>
-

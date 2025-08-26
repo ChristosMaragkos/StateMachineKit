@@ -42,42 +42,49 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\chris\\.nuget\\packages\\": {}
+    "C:\\Users\\Chris\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core.Reference\\StateMachineKit.Core.Reference.csproj",
+      "projectUniqueName": "C:\\Users\\Chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core.Reference\\StateMachineKit.Core.Reference.csproj",
       "projectName": "StateMachineKit.Core.Reference",
-      "projectPath": "C:\\Users\\chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core.Reference\\StateMachineKit.Core.Reference.csproj",
-      "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core.Reference\\obj\\",
+      "projectPath": "C:\\Users\\Chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core.Reference\\StateMachineKit.Core.Reference.csproj",
+      "packagesPath": "C:\\Users\\Chris\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core.Reference\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0",
         "netstandard2.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core\\StateMachineKit.Core.csproj": {
-              "projectPath": "C:\\Users\\chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core\\StateMachineKit.Core.csproj"
+            "C:\\Users\\Chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core\\StateMachineKit.Core.csproj": {
+              "projectPath": "C:\\Users\\Chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core\\StateMachineKit.Core.csproj"
             }
           }
         },
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
-            "C:\\Users\\chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core\\StateMachineKit.Core.csproj": {
-              "projectPath": "C:\\Users\\chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core\\StateMachineKit.Core.csproj"
+            "C:\\Users\\Chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core\\StateMachineKit.Core.csproj": {
+              "projectPath": "C:\\Users\\Chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core\\StateMachineKit.Core.csproj"
             }
           }
         }

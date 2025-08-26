@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "rvvZJ1OQcig=",
+  "dgSpecHash": "rfZGEnckJRs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Godot\\StateMachineKit.Godot.csproj",
+  "projectFilePath": "C:\\Users\\Chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Godot\\StateMachineKit.Godot.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\chris\\.nuget\\packages\\godot.sourcegenerators\\4.4.1\\godot.sourcegenerators.4.4.1.nupkg.sha512",
-    "C:\\Users\\chris\\.nuget\\packages\\godotsharp\\4.4.1\\godotsharp.4.4.1.nupkg.sha512"
+    "C:\\Users\\Chris\\.nuget\\packages\\gdexternalglobalizer.abstractions\\0.1.0\\gdexternalglobalizer.abstractions.0.1.0.nupkg.sha512",
+    "C:\\Users\\Chris\\.nuget\\packages\\gdexternalglobalizer.generator\\0.1.2\\gdexternalglobalizer.generator.0.1.2.nupkg.sha512",
+    "C:\\Users\\Chris\\.nuget\\packages\\godot.sourcegenerators\\4.4.1\\godot.sourcegenerators.4.4.1.nupkg.sha512",
+    "C:\\Users\\Chris\\.nuget\\packages\\godotsharp\\4.4.1\\godotsharp.4.4.1.nupkg.sha512",
+    "C:\\Users\\Chris\\.nuget\\packages\\godotsharpeditor\\4.4.1\\godotsharpeditor.4.4.1.nupkg.sha512",
+    "C:\\Users\\Chris\\.nuget\\packages\\statemachinekit\\2.0.0\\statemachinekit.2.0.0.nupkg.sha512"
   ],
   "logs": []
 }

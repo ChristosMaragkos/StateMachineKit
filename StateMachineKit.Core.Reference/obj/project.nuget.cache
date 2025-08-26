@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "3dy9wpGhsRY=",
+  "dgSpecHash": "KcIjIDGzyZQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core.Reference\\StateMachineKit.Core.Reference.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Chris\\RiderProjects\\StateMachineKit\\StateMachineKit.Core.Reference\\StateMachineKit.Core.Reference.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Chris\\.nuget\\packages\\statemachinekit\\2.0.0\\statemachinekit.2.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
